@@ -22,6 +22,23 @@
   - **审计与日志记录**：全程记录关键操作日志，有助于问题追溯和合规审计。
 
 ## 联系我们
-若有任何疑问、建议或问题，请在本项目的 [Issues](https://github.com/username/open_commodity_scm_erp_wms/issues) 区提出，或通过以下方式与我们联系：
+若有任何疑问、建议或问题，请在本项目的 [Issues](https://github.com/zxhbloomer/open_commodity_scm_erp_wms/issues) 区提出，或通过以下方式与我们联系：
 - 邮箱：zxhbloomer@aliyun.com
 
+## 如何运行（前端 Vue 项目）
+
+### 环境准备
+请确保本地已安装以下环境与工具：
+- [Node.js](https://nodejs.org/) (建议使用 LTS 版本，如 Node.js 16+)
+- [npm](https://www.npmjs.com/) 或 [Yarn](https://yarnpkg.com/) 包管理工具
+
+### 获取源码
+从 GitHub 仓库克隆本项目源码：
+```bash
+git clone https://github.com/username/open_commodity_scm_erp_wms.git
+
+# 使用 npm
+npm install
+
+# 或使用 yarn
+yarn install
