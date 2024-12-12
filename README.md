@@ -39,6 +39,5 @@ git clone https://github.com/username/open_commodity_scm_erp_wms.git
 
 # 使用 npm
 npm install
-
-# 或使用 yarn
-yarn install
+# 运行
+npm run dev
