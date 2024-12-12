@@ -1,0 +1,38 @@
+// transition 过渡样式
+.router-tab {
+  &-zoom {
+    &-enter-active,
+    &-leave-active {
+      transition: all .4s;
+    }
+
+    &-enter,
+    &-leave-to {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+  // 页面交换
+  &-swap {
+    $trans: 30px; // 移动位置
+
+    &-enter-active,
+    &-leave-active {
+      transition: all .5s;
+    }
+
+    &-enter,
+    &-leave-to {
+      opacity: 0;
+    }
+
+    &-enter {
+      transform: translateX(-$trans);
+    }
+
+    &-leave-to {
+      transform: translateX($trans);
+    }
+  }
+}

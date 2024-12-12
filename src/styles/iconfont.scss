@@ -1,0 +1,29 @@
+[class^="perfect-icon-"], [class*="perfect-icon-"]
+{
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family:"iconfont" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-button [class*="perfect-icon-"] + span {
+  margin-left: 5px; 
+}
+.el-checkbox-button {
+.el-checkbox-button__inner {
+.el-checkbox-button__inner [class*="perfect-icon-"] {
+  line-height: 0.9; }
+  .el-checkbox-button__inner [class*="perfect-icon-"] + span {
+    margin-left: 5px; }
+  }
+}

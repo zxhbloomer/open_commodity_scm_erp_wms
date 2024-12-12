@@ -1,0 +1,171 @@
+import SockJS from 'sockjs-client'
+import Stomp from 'stompjs'
+
+const state = {
+  socketUrl: process.env.VUE_APP_WEBSOCKET_NOTICE,
+  reconnecting: false,
+  socket: null,
+  stompClient: null,
+  headers: null
+}
+
+const mutations = {
+  WEBSOCKET_INIT ({ commit, state }, _data) {
+    if (state.stompClient === null || !state.stompClient.connected) {
+      /*
+      ① 创建sockJS对象；
+      ② 创建stomp客户端
+      ③ stompClient客户端 连接 stomp服务器
+      */
+      state.socket = new SockJS(state.socketUrl)
+      // const ws = new WebSocket('ws://localhost:8088/notice')
+      state.stompClient = Stomp.over(state.socket)
+      const headers = _data
+      state.stompClient.connect(
+        headers,
+        frame => {
+          // 连接成功： 订阅服务器的地址。为了浏览器可以接收到消息，必须先订阅服务器的地址
+          commit('WEBSOCKET_CONNECT')
+        }, err => {
+          console.log(err)
+          // 连接失败的回调
+          commit('WEBSOCKET_RECONNECT')
+        })
+
+      if (state.stompClient != null && state.websocket.readyState === SockJS.OPEN) {
+        state.stompClient.disconnect(() => {
+          commit('WEBSOCKET_CONNECT', _data)
+        })
+      } else if (state.stompClient != null && state.websocket.readyState === SockJS.CONNECTING) {
+        console.log('连接正在建立')
+        return
+      } else {
+        commit('WEBSOCKET_CONNECT')
+      }
+      if (!state.checkInterval) {
+        const interval = setInterval(() => {
+          console.log('检测连接：' + state.websocket.readyState)
+          if (state.stompClient != null && state.stompClient.connected) {
+            clearInterval(state.checkInterval)
+            state.checkInterval = null
+            console.log('重连成功')
+          } else if (state.stompClient != null && state.websocket.readyState != SockJS.CONNECTING) {
+            // 经常会遇到websocket的状态为open 但是stompClient的状态却是未连接状态，故此处需要把连接断掉 然后重连
+            state.stompClient.disconnect(() => {
+              this.WEBSOCKET_CONNECT({ commit, state }, _data)
+            })
+          }
+        }, 2000)
+        state.checkInterval = interval
+      }
+    } else {
+      console.log('连接已建立成功，不再执行')
+    }
+  },
+  WEBSOCKET_CONNECT ({ commit, state }, _headers) {
+    state.socket = new SockJS(state.url)
+    state.stompClient = Stomp.over(state.socket)
+    state.stompClient.connect(
+      _headers,
+      frame => {
+        // 连接成功： 订阅服务器的地址。为了浏览器可以接收到消息，必须先订阅服务器的地址
+        this.WEBSOCKET_CONNECT_SUBSCRIBE({ commit, state }, _headers)
+      }, err => {
+        console.log(err)
+        // 连接失败的回调
+        state.reconnect(state.socketUrl, this.WEBSOCKET_CONNECT_SUBSCRIBE({ commit, state }, _headers))
+      })
+  },
+
+  WEBSOCKET_CONNECT_SUBSCRIBE (state, _headers) {
+    // 设置心跳发送接受频率（ms）默认为10000ms。 heart-beating是利用window.setInterval()去规律地发送heart-beats或者检查服务端的heart-beats。
+    state.stompClient.heartbeat.outgoing = 10000
+    state.stompClient.heartbeat.incoming = 0 // 客户端不从服务端接收心跳包
+
+    // 订阅：1、该路由专门用于心跳检测
+    state.stompClient.subscribe('/topic/beating', res => {
+      console.log('ping!' + res)
+    })
+
+    // 订阅：2、广播
+    state.stompClient.subscribe('/topic/user/message', res => {
+      alert('订阅：2、广播--/topic/user/message')
+    })
+    // 订阅：3、一对一通知
+    state.stompClient.subscribe('/user/message', res => {
+      alert('订阅：3、一对一通知--/user/message')
+    })
+  },
+  WEBSOCKET_RECONNECT (state, _headers, callback) {
+    alert('reconnect')
+    state.reconnecting = true
+    let connected = false
+    const timer = setInterval(() => {
+      state.socket = new SockJS(state.socketUrl)
+      state.stompClient = Stomp.over(state.socket)
+      state.stompClient.connect(_headers, frame => {
+        state.reconnectting = false
+        connected = true
+        clearInterval(timer)
+        callback()
+      }, err => {
+        console.log('Reconnect failed！')
+        if (!connected) console.log(err)
+      })
+    }, 10000)
+  },
+
+  WEBSOCKET_SEND (state, p) {
+    state.stompClient.send(p.topic, {}, p.data)
+  },
+  WEBSOCKET_UNSUBSRCIBE (state, p) {
+    state.stompClient.unsubscribe(p)
+    for (let i = 0; i < state.listenerList.length; i++) {
+      if (state.listenerList[i].topic === p) {
+        state.listenerList.splice(i, 1)
+        console.log('解除订阅：' + p + ' size:' + state.listenerList.length)
+        break
+      }
+    }
+  },
+  WEBSOCKET_CLOSE_SOCKET (state, p) {
+    alert('close')
+    if (state.stompClient != null) {
+      state.stompClient.disconnect()
+      state.stompClient.disconnect(() => {
+        console.log('连接关闭')
+      })
+    }
+  }
+}
+
+const actions = {
+  WEBSOCKET_INIT ({ commit, state }, _headers) {
+    commit('WEBSOCKET_INIT', state, _headers)
+  },
+  WEBSOCKET_CONNECT ({ commit, state }, url) {
+    commit('WEBSOCKET_CONNECT', url)
+  },
+  WEBSOCKET_CONNECT_SUBSCRIBE ({ commit, state }, url) {
+    commit('WEBSOCKET_CONNECT_SUBSCRIBE', url)
+  },
+  WEBSOCKET_RECONNECT ({ commit, state }, url) {
+    commit('WEBSOCKET_RECONNECT', url)
+  },
+  WEBSOCKET_SEND ({ commit, state }, p) {
+    commit('WEBSOCKET_SEND', p)
+  },
+  WEBSOCKET_UNSUBSRCIBE ({ commit, state }, p) {
+    commit('WEBSOCKET_UNSUBSRCIBE', p)
+  },
+  WEBSOCKET_CLOSE_SOCKET ({ commit, state }, p) {
+    commit('WEBSOCKET_CLOSE_SOCKET', p)
+  }
+}
+
+export default {
+  namespaced: true,
+  state,
+  mutations,
+  actions
+}

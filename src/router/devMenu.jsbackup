@@ -1,0 +1,534 @@
+/* Layout */
+import Layout from '@/layout'
+
+/**
+ * 顶部导航栏
+ */
+export const topNav = [
+  {
+    nav_path: '01',
+    index: '1',
+    type: 'T',
+    meta: {
+      icon: 'chart',
+      name: '管理驾驶舱'
+    }
+  },
+  {
+    nav_path: '02',
+    index: '2',
+    type: 'T',
+    meta: {
+      icon: 'year',
+      name: '年度'
+    }
+  },
+  {
+    nav_path: '03',
+    index: '3',
+    type: 'T',
+    meta: {
+      icon: 'monthly',
+      name: '月度'
+    }
+  },
+  {
+    nav_path: '04',
+    index: '4',
+    type: 'T',
+    meta: {
+      icon: 'warehouse',
+      name: '仓库管理'
+    }
+  },
+  {
+    nav_path: '05',
+    index: '5',
+    type: 'T',
+    meta: {
+      icon: '系统管理',
+      name: '系统管理'
+    }
+  },
+  {
+    nav_path: '06',
+    index: '6',
+    type: 'T',
+    meta: {
+      icon: 'base',
+      name: '基础数据管理'
+    }
+  },
+  {
+    nav_path: '07',
+    index: '7',
+    type: 'T',
+    meta: {
+      icon: 'inandout',
+      name: '出入库管理'
+    }
+  },
+  {
+    nav_path: '08',
+    index: '8',
+    type: 'T',
+    meta: {
+      icon: 'inventory',
+      name: '库存管理'
+    }
+  },
+  {
+    nav_path: '09',
+    index: '9',
+    type: 'T',
+    meta: {
+      icon: '组织机构管理',
+      name: '组织机构管理'
+    }
+  }
+]
+
+// 第一个导航栏菜单
+export const router_one = [
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    name: 'P10000000', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/01_dashboard/index'),
+        name: 'Dashboard',
+        meta: { title: '首页', icon: 'dashboard', affix: true, fulltitle: ['首页'] }
+      }
+    ]
+  }
+]
+
+// 第二个导航栏菜单
+export const router_two = [
+  {
+    path: '',
+    component: Layout,
+    redirect: 'noRedirect',
+    alwaysShow: true,
+    meta: {
+      title: '总表',
+      icon: '报表',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/sys/role',
+        component: () => import('@/views/10_system/dicttype/dicttype'),
+        name: 'P20000000', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '钢材成品销售合同', icon: '合同' }
+      }
+    ]
+  }
+]
+
+// 第三个导航栏菜单
+export const router_three = [
+  {
+    path: '',
+    component: Layout,
+    redirect: 'noRedirect',
+    alwaysShow: true,
+    meta: {
+      title: '总表',
+      icon: '报表',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/sys/role',
+        component: () => import('@/views/10_system/dicttype/dicttype'),
+        name: 'P30000000', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '钢材成品销售合同', icon: '合同' }
+      }
+    ]
+  }
+]
+
+// 第四个导航栏菜单
+export const router_four = [
+  {
+    path: '',
+    component: Layout,
+    redirect: 'noRedirect',
+    alwaysShow: true,
+    meta: {
+      title: '仓库管理',
+      icon: 'warehouse',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/master/warehouse',
+        component: () => import('@/views/30_wms/warehouse/warehouse'),
+        name: 'P00000250', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '仓库管理', icon: 'warehouse' }
+      },
+      {
+        path: '/master/location',
+        component: () => import('@/views/30_wms/location/location'),
+        name: 'P00000260', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '库区管理', icon: 'location' }
+      },
+      {
+        path: '/master/bin',
+        component: () => import('@/views/30_wms/bin/bin'),
+        name: 'P00000270', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '库位管理', icon: 'bin' }
+      }
+    ]
+  }
+]
+
+// 第五个导航栏菜单
+export const router_five = [
+  {
+    path: '',
+    // component: subMenu,
+    redirect: 'noRedirect',
+    // name: 'M00000020', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+    alwaysShow: true,
+    meta: {
+      title: '字典管理',
+      icon: '字典管理',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/dic/dicttype',
+        component: () => import('@/views/10_system/dicttype/dicttype'),
+        name: 'P00000030',
+        meta: { title: '字典类型', closable: false }
+      },
+      {
+        path: '/dic/dictdata',
+        component: () => import('@/views/10_system/dictdata/dictdata'),
+        name: 'P00000050',
+        meta: { title: '字典数据', closable: true }
+      }
+    ]
+  },
+  {
+    path: '/config',
+    component: () => import('@/views/10_system/config/config'),
+    name: 'P00000060',
+    meta: { title: '系统参数', icon: '系统参数' }
+  },
+  {
+    path: '/syscode',
+    component: () => import('@/views/00_platform/syscode/syscode'),
+    name: 'P00000180',
+    meta: { title: '编码管理', icon: '系统参数' }
+  }
+]
+
+// 第六个导航栏菜单
+export const router_six = [
+  {
+    path: '',
+    // component: subMenu,
+    redirect: 'noRedirect',
+    name: 'M00000020', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+    alwaysShow: true,
+    meta: {
+      title: '商品档案管理',
+      icon: 'goods',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/master/businesstype',
+        component: () => import('@/views/30_wms/businesstype/businesstype'),
+        name: 'P00000280',
+        meta: { title: '板块管理', icon: 'businesstype' }
+      },
+      {
+        path: '/master/industry',
+        component: () => import('@/views/30_wms/industry/industry'),
+        name: 'P00000290',
+        meta: { title: '行业管理', icon: 'industry' }
+      },
+      {
+        path: '/master/category',
+        component: () => import('@/views/30_wms/category/category'),
+        name: 'P00000300',
+        meta: { title: '类别管理', icon: 'category' }
+      },
+      {
+        path: '/master/goods',
+        component: () => import('@/views/30_wms/goods/goods'),
+        name: 'P00000310',
+        meta: { title: '物料管理', icon: 'goods' }
+      },
+      {
+        path: '/master/spec',
+        component: () => import('@/views/30_wms/spec/spec'),
+        name: 'P00000320',
+        meta: { title: '规格管理', icon: 'spec' }
+      }
+    ]
+  },
+  {
+    path: '',
+    // component: subMenu,
+    redirect: 'customer',
+    name: 'M00000030', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+    alwaysShow: true,
+    meta: {
+      title: '客户档案管理',
+      icon: 'customer',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/master/customer',
+        component: () => import('@/views/30_wms/customer/customer'),
+        name: 'P00000330',
+        meta: { title: '客户管理', icon: 'customer' }
+      }
+    ]
+  }
+
+]
+
+// 第七个导航栏菜单
+export const router_seven = [
+  {
+    path: '',
+    // component: subMenu,
+    redirect: 'noRedirect',
+    // name: 'M00000040', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+    alwaysShow: true,
+    meta: {
+      title: '入库管理',
+      icon: 'warehouein',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/inandout/inplan',
+        component: () => import('@/views/40_business/inplan/inplan'),
+        name: 'P00000340',
+        meta: { title: '入库计划管理', icon: 'inplan' }
+      },
+      {
+        path: '/inandout/in',
+        component: () => import('@/views/40_business/in/in'),
+        name: 'P00000350',
+        meta: { title: '入库单管理', icon: 'in' }
+      },
+      {
+        path: '/inandout/inorder',
+        component: () => import('@/views/40_business/inorder/inorder'),
+        name: 'P00000360',
+        meta: { title: '入库订单管理', icon: 'in' }
+      }
+    ]
+  },
+  {
+    path: '',
+    // component: subMenu,
+    redirect: 'noRedirect',
+    // name: 'M00000050', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+    alwaysShow: true,
+    meta: {
+      title: '出库管理',
+      icon: 'out',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/inandout/outplan',
+        component: () => import('@/views/40_business/outplan/outplan'),
+        name: 'P00000370',
+        meta: { title: '出库计划管理', icon: 'outplan' }
+      },
+      {
+        path: '/inandout/out',
+        component: () => import('@/views/40_business/out/out'),
+        name: 'P00000380',
+        meta: { title: '出库单管理', icon: 'warehoueout' }
+      },
+      {
+        path: '/inandout/outorder',
+        component: () => import('@/views/40_business/outorder/outorder'),
+        name: 'P00000390',
+        meta: { title: '出库订单管理', icon: 'warehoueout' }
+      }
+    ]
+  }
+
+]
+
+// 第八个导航栏菜单
+export const router_eight = [
+  {
+    path: '',
+    // component: subMenu,
+    redirect: 'noRedirect',
+    // name: 'M00000060', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+    alwaysShow: true,
+    meta: {
+      title: '库存管理',
+      icon: 'inventory1',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/inventory/inventory',
+        component: () => import('@/views/40_business/inventory/inventory'),
+        name: 'P00000400',
+        meta: { title: '库存管理', icon: 'inventory2' }
+      }
+    ]
+  }
+]
+
+// 第九个导航栏菜单
+export const router_nine = [
+  {
+    path: '',
+    component: Layout,
+    redirect: 'noRedirect',
+    alwaysShow: true,
+    meta: {
+      title: '织机构管理',
+      icon: 'tree',
+      noCache: true
+    },
+    children: [
+      {
+        path: '/org/orginfo',
+        component: () => import('@/views/20_master/org/org'),
+        name: 'P00000170', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '组织机构管理', icon: '组织架构' }
+      },
+      {
+        path: '/org/group',
+        component: () => import('@/views/20_master/group/group'),
+        name: 'P00000100', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '集团信息', icon: 'group' }
+      },
+      {
+        path: '/org/company',
+        component: () => import('@/views/20_master/company/company'),
+        name: 'P00000110', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '企业信息', icon: 'company' }
+      },
+      {
+        path: '/org/dept',
+        component: () => import('@/views/20_master/dept/dept'),
+        name: 'P00000150', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '部门信息', icon: 'dept' }
+      },
+      {
+        path: '/org/position',
+        component: () => import('@/views/20_master/position/position'),
+        name: 'P00000160', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '岗位信息', icon: 'position' }
+      },
+      {
+        path: '/org/position2',
+        component: () => import('@/views/20_master/position2/position'),
+        name: 'P00000161', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '岗位信息', icon: 'position' }
+      },
+      {
+        path: '/org/staff',
+        component: () => import('@/views/20_master/staff/staff'),
+        name: 'P00000140', // 设定路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题
+        meta: { title: '员工管理', icon: 'staff' }
+      }
+    ]
+  },
+  {
+    path: '',
+    component: Layout,
+    redirect: 'noRedirect',
+    alwaysShow: true,
+    meta: {
+      title: '权限管理',
+      icon: '权限管理',
+      noCache: true
+    },
+    children: [
+      {
+        path: 'role',
+        component: () => import('@/views/10_system/role/role'),
+        name: 'P00000251',
+        meta: { title: '角色', icon: 'permission' }
+      },
+      {
+        path: 'permissiondept',
+        component: () => import('@/views/20_master/permission/dept/permission_dept'),
+        name: 'P00000254',
+        meta: { title: '部门权限', icon: 'permission' }
+      },
+      {
+        path: 'permission',
+        component: () => import('@/views/20_master/permission/role/permission_role'),
+        name: 'P00000252',
+        meta: { title: '权限设置', icon: 'permission' }
+      },
+      {
+        path: 'authorize',
+        component: () => import('@/views/20_master/authorize/authorize'),
+        name: 'P00000254',
+        meta: { title: '岗位角色', icon: 'permission' }
+      },
+      {
+        path: 'operation',
+        component: () => import('@/views/20_master/permission/role/right/sub_template/operation'),
+        name: 'P00000253',
+        meta: { title: '角色权限', icon: 'permission' }
+      },
+      {
+        path: 'fun',
+        // component: subMenu,
+        redirect: 'noRedirect',
+        alwaysShow: true,
+        meta: { title: '权限配置管理', icon: 'setting', noCache: true },
+        children: [
+          {
+            path: 'funs',
+            component: () => import('@/views/10_system/pages/function/function'),
+            name: 'P00000220',
+            meta: { title: '按钮维护' }
+          },
+          {
+            path: 'pages',
+            component: () => import('@/views/10_system/pages/page/page'),
+            name: 'P00000200',
+            meta: { title: '页面维护' }
+          },
+          {
+            path: 'page_fun',
+            component: () => import('@/views/10_system/pages/page_function/page_function'),
+            name: 'P00000210',
+            meta: { title: '页面按钮维护' }
+          },
+          {
+            path: 'menus',
+            component: () => import('@/views/20_master/menus/menu'),
+            name: 'P00000240',
+            meta: { title: '菜单维护' }
+          }
+        ]
+      }
+    ]
+  }
+]
+
+/**
+ * 每个导航栏中的数据
+ */
+export const asyncRoutesArray = [[...router_one], [...router_two], [...router_three], [...router_four], [...router_five], [...router_six], [...router_seven], [...router_eight], [...router_nine]]
+export const asyncRoutesAll = [...router_one, ...router_two, ...router_three, ...router_four, ...router_five, ...router_six, ...router_seven, ...router_eight, ...router_nine]
+

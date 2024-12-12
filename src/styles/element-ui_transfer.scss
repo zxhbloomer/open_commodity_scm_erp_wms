@@ -1,0 +1,36 @@
+$headerHeight:40px;
+$footerHeight:0;
+$transferPanelHeight: 450px;
+
+.el-transfer {
+    width: 90%;
+    height: calc(100% - 100px);
+    .el-transfer-panel {
+      height: $transferPanelHeight;
+      width: 40%;
+      .el-transfer-panel__header{
+        height: $headerHeight;
+      }
+      .el-transfer-panel__body{
+        height: calc(100% - 40px);
+        .el-transfer-panel__list.is-filterable{
+          height: calc(100% - 32px);
+        }
+        .el-transfer-panel__filter {
+          margin: 5px;
+        }
+      }
+      .el-transfer-panel__footer{
+        height: $footerHeight;
+      }
+    }
+    .el-transfer__buttons{
+      padding: 0px 10px;
+    }
+    .el-transfer__buttons{
+      width: 20%;
+      .el-transfer__button:nth-child(2){
+        margin: 0 auto;
+      }
+   }
+}

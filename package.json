@@ -1,0 +1,148 @@
+{
+  "name": "wms-admin",
+  "version": "0.0.1",
+  "description": "仓储系统",
+  "author": "xinyirun",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vue-cli-service serve && webpack-dev-server --open",
+    "build:xrhd_production": "vue-cli-service build --mode xrhd_production",
+    "build:zl_production": "vue-cli-service build --mode zl_production",
+    "build:hd_production": "vue-cli-service build --mode hd_production",
+    "build:qr_production": "vue-cli-service build --mode qr_production",
+    "build:centos_test": "vue-cli-service build --mode centos_test",
+    "build:centos_test2": "vue-cli-service build --mode centos_test2",
+    "build:centos_test_app": "vue-cli-service build --mode centos_test_app",
+    "build:stage": "vue-cli-service build --mode staging",
+    "preview": "node build/index.js --preview",
+    "lint": "eslint --ext .js,.vue src",
+    "test:unit": "jest --clearCache && vue-cli-service test:unit",
+    "test:ci": "npm run lint && npm run test:unit",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
+    "new": "plop"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "vue",
+    "admin",
+    "dashboard",
+    "element-ui",
+    "boilerplate",
+    "admin-template",
+    "management-system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PanJiaChen/vue-element-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PanJiaChen/vue-element-admin/issues"
+  },
+  "eslitenConfig": {
+    "rules": {
+      "vue/no-unused-components": "off"
+    }
+  },
+  "dependencies": {
+    "@babel/core": "7.0.0",
+    "@babel/register": "7.0.0",
+    "core-js": "^3.21.1",
+    "vue-autonumeric": "1.2.6",
+    "js-base64": "3.6.0",
+    "axios": "^0.19.0",
+    "clipboard": "2.0.4",
+    "codemirror": "5.45.0",
+    "deep-copy": "1.4.2",
+    "driver.js": "0.9.5",
+    "dropzone": "5.5.1",
+    "echarts": "4.2.1",
+    "element-ui": "2.15.14",
+    "fuse.js": "3.4.4",
+    "js-cookie": "2.2.0",
+    "js-file-download": "0.4.7",
+    "jsonlint": "1.6.3",
+    "normalize.css": "7.0.0",
+    "nprogress": "0.2.0",
+    "path-to-regexp": "2.4.0",
+    "screenfull": "4.2.0",
+    "script-loader": "0.7.2",
+    "sortablejs": "^1.10.2",
+    "vue": "2.7.15",
+    "vue-count-to": "1.0.13",
+    "vue-router": "3.1.3",
+    "vuedraggable": "2.23.2",
+    "vuex": "3.1.0",
+    "vue-kindeditor": "0.4.9",
+    "lightgallery.js": "^1.4.0",
+    "lg-autoplay.js": "^1.0.0",
+    "lg-fullscreen.js": "^1.1.0",
+    "lg-pager.js": "^1.0.0",
+    "lg-thumbnail.js": "1.2.0",
+    "lg-video.js": "^1.0.0",
+    "lg-zoom.js": "1.3.0",
+    "lg-rotate.js": "1.2.0",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
+    "pubsub-js": "^1.9.4",
+    "vue-cropper": "0.5.5",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.1",
+    "leader-line-vue": "^2.1.1",
+    "zxcvbn": "^4.4.2",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "@babel/core": "7.0.0",
+    "@babel/register": "7.0.0",
+    "@vue/cli-plugin-babel": "4.4.4",
+    "@vue/cli-plugin-eslint": "4.4.4",
+    "@vue/cli-plugin-unit-jest": "4.4.4",
+    "@vue/cli-service": "4.4.4",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-plugin-import": "^1.11.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-plugin-dynamic-import-node": "2.3.3",
+    "autoprefixer": "^9.5.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "^25.0.0",
+    "chalk": "2.4.2",
+    "chokidar": "2.1.5",
+    "connect": "3.6.6",
+    "eslint": "5.15.3",
+    "eslint-plugin-vue": "5.2.2",
+    "html-webpack-plugin": "3.2.0",
+    "husky": "1.3.1",
+    "lint-staged": "8.1.5",
+    "mockjs": "1.0.1-beta3",
+    "plop": "2.3.0",
+    "runjs": "^4.3.2",
+    "sass": "1.32.13",
+    "sass-loader": "^10.1.1",
+    "script-ext-html-webpack-plugin": "2.1.3",
+    "script-loader": "0.7.2",
+    "serve-static": "^1.13.2",
+    "svg-sprite-loader": "4.1.3",
+    "svgo": "1.2.0",
+    "vue-template-compiler": "2.6.10",
+    "@toast-ui/vue-editor": "^3.2.2"
+  },
+  "engines": {
+    "node": ">=8.9",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

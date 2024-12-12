@@ -1,0 +1,132 @@
+.el-table--striped .el-table__body tr.el-table__row--striped.el-table__row--striped.el-table__row--striped td {
+    background-color: rgb(235, 242, 250);
+    /*替换为你需要的颜色，觉得优先级不够就加!important*/
+}
+
+/*表格公有化*/
+.el-table .warning-row {
+    background: #9fbfd4;
+    cursor: pointer;
+}
+
+.el-table .success-row {
+    background: #fff;
+    cursor: pointer;
+}
+
+// .el-form-item__content{
+// height: 40px;
+// }
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+    background-color: #9fbfd4;
+}
+
+.el-table__expanded-cell:hover {
+    background-color: #9fbfd4;
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped.current-row td,
+.el-table__body tr.current-row>td,
+.el-table__body tr.hover-row.current-row>td,
+.el-table__body tr.hover-row.el-table__row--striped.current-row>td,
+.el-table__body tr.hover-row.el-table__row--striped>td,
+.el-table__body tr.hover-row>td {
+    background-color: #9fbfd4 !important;
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+    background-color: #9fbfd4 !important;
+}
+
+/* 设置表主体的高度 */
+.el-table__body td,
+.el-table__body th {
+    padding: 2px;
+}
+
+/*全局弹窗修改*/
+.el-dialog__header {
+    padding: 15px 20px 15px 20px;
+    background: #115aa5;
+    color: #fff;
+}
+
+.el-dialog__header,
+.el-dialog__title {
+    color: #fff;
+}
+
+/*.el-dialog__body{*/
+/*float: left;*/
+/*}*/
+.dialg-body .el-dialog__body {
+    float: inherit;
+}
+
+/*分页插件*/
+.el-pagination {
+    text-align: right !important;
+}
+
+.pagination-container {
+    text-align: center;
+    padding: 10px 0px 10px;
+    margin-top: 0px !important;
+}
+
+/* 滚动条宽度设置 */
+/*滚动条整体部分,必须要设置*/
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+}
+
+/*滚动条的轨道*/
+::-webkit-scrollbar-track {
+    background-color: rgb(207, 207, 207);
+    border-radius: 10px;
+}
+
+/*滚动条的滑块按钮*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(151, 151, 151);
+}
+
+/*滚动条的上下两端的按钮*/
+// ::-webkit-scrollbar-button{
+// }
+.amap-logo {
+    z-index: 0 !important;
+}
+
+.amap-copyright {
+    z-index: 0 !important;
+}
+
+// /**
+//  * 设置表头宽度
+//  */
+// .el-table--mini th, .el-table--mini td {
+//   padding: 2px 0;
+// }
+
+/**
+ * 设置排序的高度
+ */
+.el-table .caret-wrapper {
+    height: 23px;
+}
+
+.el-table .sort-caret.ascending {
+    top: -1px;
+}
+
+.el-table .sort-caret.descending {
+    bottom: 2px;
+}
+
+.el-table--mini .el-table__cell {
+  padding: 3.5px 0;
+}

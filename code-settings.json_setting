@@ -1,0 +1,57 @@
+{
+    "git.ignoreMissingGitWarning": true,
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "vetur.validation.template": false,
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".vue"
+        ]
+    },
+    "eslint.validate": [
+        "javascript",
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        "html",
+        "vue"
+    ],
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "vue": "html",
+        "vue-html": "html"
+    },
+    "editor.fontSize": 14,
+    "editor.snippetSuggestions": "top",
+    "dart.openDevTools": "flutter",
+    "[xml]": {
+        "editor.defaultFormatter": "fabianlauer.vs-code-xml-format"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur" // 使用 vetur 格式化规则
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    // 在方法括号之间插入空格
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "vetur.format.defaultFormatterOptions": {
+        "prettier": {
+            // 格式化不加分号
+            "semi": false,
+            // 格式化为单引号
+            "singleQuote": true,
+            // 禁止随时添加逗号,这个很重要。找了好久
+            "trailingComma": "none"
+        },
+        // "js-beautify-html": {
+        //     "wrap_attributes": "force-aligned"
+        //     // #vue组件中html代码格式化样式
+        // }
+    },
+    "editor.formatOnSave": true, //在保存文件时自动格式化代码
+}
