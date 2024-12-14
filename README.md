@@ -25,8 +25,7 @@
 若有任何疑问、建议或问题，请在本项目的 [Issues](https://github.com/zxhbloomer/open_commodity_scm_erp_wms/issues) 区提出，或通过以下方式与我们联系：
 - 邮箱：zxhbloomer@aliyun.com
 - 微信二维码（扫码联系）：
-
-  ![微信二维码](./docs/images/my_wechat_qr_code.jpg)
+<img src="./docs/images/my_wechat_qr_code.jpg" alt="微信二维码" width="200" />
 
 ## 如何运行（前端 Vue 项目）
 
