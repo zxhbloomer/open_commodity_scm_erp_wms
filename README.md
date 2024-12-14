@@ -24,6 +24,9 @@
 ## 联系我们
 若有任何疑问、建议或问题，请在本项目的 [Issues](https://github.com/zxhbloomer/open_commodity_scm_erp_wms/issues) 区提出，或通过以下方式与我们联系：
 - 邮箱：zxhbloomer@aliyun.com
+- 微信二维码（扫码联系）：
+
+  ![微信二维码](./docs/images/my_wechat_qr_code.jpg)
 
 ## 如何运行（前端 Vue 项目）
 
@@ -58,4 +61,4 @@ npm run dev
    ![菜单与模块界面截图](./docs/images/入库计划.png)
 
 
-通过上述截图，用户可以对项目的运行过程、界面布局和功能模块有更直观的了解。在 README 中搭配这些图示有助于加深用户对项目的整体认知。根据实际项目情况可增减和替换图片内容。
+
