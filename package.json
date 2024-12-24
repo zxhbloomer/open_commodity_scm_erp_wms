@@ -6,13 +6,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve && webpack-dev-server --open",
-    "build:xrhd_production": "vue-cli-service build --mode xrhd_production",
-    "build:zl_production": "vue-cli-service build --mode zl_production",
-    "build:hd_production": "vue-cli-service build --mode hd_production",
-    "build:qr_production": "vue-cli-service build --mode qr_production",
-    "build:centos_test": "vue-cli-service build --mode centos_test",
-    "build:centos_test2": "vue-cli-service build --mode centos_test2",
-    "build:centos_test_app": "vue-cli-service build --mode centos_test_app",
     "build:stage": "vue-cli-service build --mode staging",
     "preview": "node build/index.js --preview",
     "lint": "eslint --ext .js,.vue src",

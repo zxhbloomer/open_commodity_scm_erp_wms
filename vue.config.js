@@ -10,6 +10,9 @@ function resolve (dir) {
 
 const name = defaultSettings.title || '管理后台' // page title
 
+// 读取配置的api url
+const api_url = process.env.VUE_APP_TEST_IP_PORT
+
 // If your port is set to 80,
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
@@ -51,7 +54,8 @@ module.exports = {
     proxy: {
       // wms后台端代理
       '/wms': {
-        target: 'http://127.0.0.1:8088/',
+        // target: 'http://127.0.0.1:8088/',
+        target: `${api_url}`,
         proxyTimeout: 600000,
         ws: true,
         changeOrigin: true
